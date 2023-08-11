@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../data/task_inherited.dart';
+import 'package:provider/provider.dart';
+import 'package:studymate_project_fetin/data/task_provider.dart';
+import '../components/task.dart';
 import 'form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -11,8 +12,18 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
+  Widget buildTaskWidget(Task task) {
+    return Task(
+      task.nome,
+      task.foto,
+      task.dificuldade,
+      // Outros parâmetros da classe Task que você possa precisar
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final taskProvider = Provider.of<TaskProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -38,7 +49,7 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
       body: ListView(
         padding: EdgeInsets.only(top: 8, bottom: 70),
-        children: TaskInherited.of(context).taskList,
+        children: taskProvider.taskList.map((task) => buildTaskWidget(task)).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -46,7 +57,7 @@ class _InitialScreenState extends State<InitialScreen> {
             context,
             MaterialPageRoute(
               builder: (contextNew) => FormScreen(
-                taskContext: context,
+                taskProvider: taskProvider,
               ),
             ),
           );
