@@ -1,7 +1,7 @@
 class DailyReport {
   final int id;
   final DateTime reportDate;
-  final int completedTasksCount;
+  int completedTasksCount;
   final int totalPlannedTasks;
 
   DailyReport({
@@ -10,4 +10,8 @@ class DailyReport {
     required this.completedTasksCount,
     required this.totalPlannedTasks,
   });
+
+  void taskCompleted() {
+    completedTasksCount++;
+  }
 }

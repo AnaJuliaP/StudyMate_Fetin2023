@@ -1,9 +1,9 @@
-class Task {
+class TaskModel {
   final int id;
   final String name;
   final int difficulty;
 
-  Task({
+  TaskModel({
     required this.id,
     required this.name,
     required this.difficulty,

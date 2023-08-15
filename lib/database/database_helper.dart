@@ -1,39 +1,48 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+import '../models/completed_task.dart';
 
-class DatabaseHelper {
-  static final DatabaseHelper instance = DatabaseHelper._init();
+
+class DBHelper {
   static Database? _database;
-
-  DatabaseHelper._init();
+  static final _dbName = 'completed_tasks.db';
+  static final _dbVersion = 1;
+  static final _tableName = 'completed_tasks';
 
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('app_database.db');
+    _database = await _initDB();
     return _database!;
   }
 
-  Future<Database> _initDB(String filePath) async {
+  Future<Database> _initDB() async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
+    final path = join(dbPath, _dbName);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(
+      path,
+      version: _dbVersion,
+      onCreate: (db, version) async {
+        await db.execute('''
+          CREATE TABLE $_tableName (
+            id INTEGER PRIMARY KEY,
+            name TEXT,
+            difficulty INTEGER,
+            completion_date TEXT
+          )
+        ''');
+      },
+    );
   }
 
-  Future<void> _createDB(Database db, int version) async {
-    final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
-    final dateTimeType = 'TEXT NOT NULL';
-    final integerType = 'INTEGER NOT NULL';
-
-    await db.execute('''
-      CREATE TABLE completed_tasks (
-        id $idType,
-        taskId $integerType,
-        completionDate $dateTimeType,
-        dailyReportId $integerType
-      )
-    ''');
+  Future<void> insertCompletedTask(CompletedTaskModel task) async {
+    final db = await database;
+    await db.insert(
+      _tableName,
+      task.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 }

@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studymate_project_fetin/data/task_provider.dart';
-import '../data/daily_report_provider.dart';
+import '../models/completed_task.dart';
 import 'congratulations_dialog.dart';
 import 'difficulty.dart';
-import 'daily_report.dart';
+import '../data/completed_task_provider.dart';
+import '../models/task_model.dart';
 
-class Task extends StatefulWidget {
+
+
+
+class TaskComponent extends StatefulWidget {
+
   final String nome;
   final String foto;
   final int dificuldade;
-  bool concluida; // Nova propriedade
+  bool concluida;
   DateTime? dataConclusao;
 
-  Task(
+  TaskComponent(
+
     this.nome,
     this.foto,
     this.dificuldade, {
@@ -25,11 +31,13 @@ class Task extends StatefulWidget {
 
   BuildContext? get taskContext => null;
 
+
+
   @override
-  State<Task> createState() => _TaskState();
+  State<TaskComponent> createState() => _TaskComponentState();
 }
 
-class _TaskState extends State<Task> {
+class _TaskComponentState extends State<TaskComponent> {
   bool assetOrNetwork() {
     if (widget.foto.contains('http')) {
       return false;
@@ -50,23 +58,25 @@ class _TaskState extends State<Task> {
             },
           );
 
-          final dailyReportProvider = Provider.of<DailyReportProvider>(
+          final completedTaskProvider = Provider.of<CompletedTaskProvider>(
             context,
             listen: false,
           );
 
-          dailyReportProvider.taskCompleted();
+          TaskModel taskModel = TaskModel(
+            id: 0, // Defina o ID corretamente
+            name: widget.nome,
+            difficulty: widget.dificuldade,
+          );
+
+          completedTaskProvider.addCompletedTask(taskModel);
+
 
         }
 
         widget.nivel = 1;
 
         final taskProvider = Provider.of<TaskProvider>(
-          context,
-          listen: false,
-        );
-
-        final dailyReportProvider = Provider.of<DailyReportProvider>(
           context,
           listen: false,
         );
@@ -79,6 +89,7 @@ class _TaskState extends State<Task> {
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

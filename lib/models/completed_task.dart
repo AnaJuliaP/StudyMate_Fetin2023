@@ -1,22 +1,22 @@
-class CompletedTask {
+class CompletedTaskModel {
   final int id;
-  final int taskId;
+  final String name;
+  final int difficulty;
   final DateTime completionDate;
-  final int dailyReportId;
 
-  CompletedTask({
+  CompletedTaskModel({
     required this.id,
-    required this.taskId,
+    required this.name,
+    required this.difficulty,
     required this.completionDate,
-    required this.dailyReportId,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'taskId': taskId,
-      'completionDate': completionDate.toIso8601String(),
-      'dailyReportId': dailyReportId,
+      'name': name,
+      'difficulty': difficulty,
+      'completion_date': completionDate.toIso8601String(),
     };
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:studymate_project_fetin/data/completed_task_provider.dart';
 import 'package:studymate_project_fetin/data/task_provider.dart';
 import 'package:studymate_project_fetin/screens/initial_screen.dart';
 import 'package:studymate_project_fetin/screens/menu_screen.dart';
 import 'package:studymate_project_fetin/screens/login_screen.dart';
 
-import 'data/daily_report_provider.dart';
+
 
 
 
@@ -13,7 +14,8 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => TaskProvider()),
-      ChangeNotifierProvider(create: (_) => DailyReportProvider()),
+      ChangeNotifierProvider(create: (context) => CompletedTaskProvider()),
+
     ],
     child: const MyApp(),
   ));

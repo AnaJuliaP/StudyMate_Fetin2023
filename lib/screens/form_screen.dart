@@ -139,7 +139,7 @@ class _FormScreenState extends State<FormScreen> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          widget.taskProvider.addTask(Task(
+                          widget.taskProvider.addTask(TaskComponent(
                             nameController.text,
                             imageController.text,
                             int.parse(difficultyController.text),

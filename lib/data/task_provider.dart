@@ -3,17 +3,19 @@ import 'package:provider/provider.dart';
 
 import '../components/task.dart';
 
+
+
 class TaskProvider extends ChangeNotifier {
-  List<Task> _taskList = [
-    Task('Aprender Flutter', 'assets/images/dash.png', 3),
-    Task('Andar de Bike', 'assets/images/bike.webp', 2),
-    Task('Meditar', 'assets/images/meditar.jpeg', 5),
-    Task('Ler', 'assets/images/livro.jpg', 4),
+  List<TaskComponent> _taskList = [
+    TaskComponent('Aprender Flutter', 'assets/images/dash.png', 3),
+    TaskComponent('Andar de Bike', 'assets/images/bike.webp', 2),
+    TaskComponent('Meditar', 'assets/images/meditar.jpeg', 5),
+    TaskComponent('Ler', 'assets/images/livro.jpg', 4),
   ];
 
-  List<Task> get taskList => _taskList;
+  List<TaskComponent> get taskList => _taskList;
 
-  void addTask(Task task) {
+  void addTask(TaskComponent task) {
     _taskList.add(task);
     notifyListeners();
   }

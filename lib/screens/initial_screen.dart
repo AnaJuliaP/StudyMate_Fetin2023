@@ -12,8 +12,8 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  Widget buildTaskWidget(Task task) {
-    return Task(
+  Widget buildTaskWidget(TaskComponent task) {
+    return TaskComponent(
       task.nome,
       task.foto,
       task.dificuldade,
