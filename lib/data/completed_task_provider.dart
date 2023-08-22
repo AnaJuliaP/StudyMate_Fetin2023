@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-
 import '../database/database_helper.dart';
 import '../models/completed_task.dart';
+import '../models/progress_data.dart';
 import '../models/task_model.dart';
 
 
@@ -23,5 +23,14 @@ class CompletedTaskProvider with ChangeNotifier {
     notifyListeners();
 
     await _dbHelper.insertCompletedTask(completedTask); // Inserir no DB
+  }
+
+  List<ProgressData> get progressChartData {
+    return completedTasks.map((completedTask) {
+      return ProgressData(
+        completedTask.completionDate,
+        completedTask.difficulty.toDouble(), // Use o campo relevante para o progresso
+      );
+    }).toList();
   }
 }

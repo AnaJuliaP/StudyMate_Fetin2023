@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:studymate_project_fetin/screens/report_detail_screen.dart';
+import 'package:studymate_project_fetin/screens/menu_report_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -136,7 +136,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     height: 100,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ReportDetailScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MenuReportScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,

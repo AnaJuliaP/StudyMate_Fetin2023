@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../data/completed_task_provider.dart';
 import '../models/completed_task.dart';
 
-
-class ReportDetailScreen extends StatelessWidget {
+class TasksMadeToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final completedTaskProvider = Provider.of<CompletedTaskProvider>(context);
