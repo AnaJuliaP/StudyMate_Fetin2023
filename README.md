@@ -1,4 +1,4 @@
 # studymate_project_fetin
 
-Projeto gerenciado de hábitos para Fetin 2023
+Projeto gerenciador de hábitos para Fetin 2023
 
