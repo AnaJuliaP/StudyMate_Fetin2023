@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:studymate_project_fetin/screens/pomodoro_screen.dart';
 import 'package:studymate_project_fetin/screens/menu_report_screen.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -84,12 +85,14 @@ class _MenuScreenState extends State<MenuScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   // Botão Calendário e to-do list
+
                   SizedBox(
                     width: 100,
                     height: 100,
                     child: ElevatedButton(
                       onPressed: () {
                         // Lógica do botão
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Pomodoro()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -98,7 +101,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0))),
                       child: const Icon(
-                        Icons.calendar_month,
+                        Icons.access_time,
                         size: 50,
                       ),
                     ),

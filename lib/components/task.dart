@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studymate_project_fetin/data/task_provider.dart';
-import '../models/completed_task.dart';
 import 'congratulations_dialog.dart';
 import 'difficulty.dart';
 import '../data/completed_task_provider.dart';

@@ -5,9 +5,7 @@ import 'package:studymate_project_fetin/data/task_provider.dart';
 import 'package:studymate_project_fetin/screens/initial_screen.dart';
 import 'package:studymate_project_fetin/screens/menu_screen.dart';
 import 'package:studymate_project_fetin/screens/login_screen.dart';
-
-
-
+import 'package:studymate_project_fetin/store/pomodoro.store.dart';
 
 
 void main() {
@@ -15,6 +13,9 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => TaskProvider()),
       ChangeNotifierProvider(create: (context) => CompletedTaskProvider()),
+      Provider<PomodoroStore>(
+          create: (_) => PomodoroStore(),
+      )
 
     ],
     child: const MyApp(),

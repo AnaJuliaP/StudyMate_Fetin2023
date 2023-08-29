@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:studymate_project_fetin/screens/week_progress_screen.dart';
 import '../components/menu_item.dart';
-import '../data/completed_task_provider.dart';
-import '../models/completed_task.dart';
 import 'daily_report_screen.dart';
 
 class MenuReportScreen extends StatefulWidget {
@@ -16,7 +13,25 @@ class _MenuReportScreenState extends State<MenuReportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Progresso'),
+        title: Text('Progresso',),
+        leading: Container(
+          width: 100,
+          height: 100,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                shape: RoundedRectangleBorder(),
+                elevation: 0),
+            child: const Icon(
+              Icons.arrow_back,
+              size: 25,
+              color: Colors.white,
+            ),
+          ),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(

@@ -13,7 +13,7 @@ class CompletedTaskProvider with ChangeNotifier {
 
   Future<void> addCompletedTask(TaskModel task) async {
     final completedTask = CompletedTaskModel(
-      id: _completedTasks.length + 1, // Pode ser gerado automaticamente pelo DB
+      id: _completedTasks.length + 1,
       name: task.name,
       difficulty: task.difficulty,
       completionDate: DateTime.now(),
