@@ -15,7 +15,7 @@ class Pomodoro extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.white,
         title: const Text('Pomodoro'),
         leading: Container(
           width: 100,
@@ -25,13 +25,13 @@ class Pomodoro extends StatelessWidget {
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(),
                 elevation: 0),
             child: const Icon(
               Icons.arrow_back,
               size: 25,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),

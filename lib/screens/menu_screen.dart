@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:studymate_project_fetin/screens/pomodoro_screen.dart';
 import 'package:studymate_project_fetin/screens/menu_report_screen.dart';
@@ -14,168 +15,130 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text('StudyMate'),
-        leading: SizedBox(
-          width: 100,
-          height: 100,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
-                shape: RoundedRectangleBorder(),
-                elevation: 0),
-            child: const Icon(
-              Icons.arrow_back,
-              size: 25,
-              color: Colors.white,
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.blue,
+                  Colors.deepPurple,
+                ])),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 100, left: 15),
+                    child: Image.asset(
+                      'assets/images/img_profile.png',
+                      scale: 3.0,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100, right: 15),
+                    child: SvgPicture.asset(
+                      'assets/images/img_notification.svg',
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 15,bottom: 15),
+                child: Text('PÁGINA INICIAL',style: TextStyle(color: Colors.white),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Pomodoro()));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        child: Image.asset('assets/images/img_rectangle9.png'),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'CONTROLE DE PRODUTIVIDADE',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    minimumSize: Size(double.infinity, 100),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/InitialScreen');
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        child: Image.asset('assets/images/img_rectangle9_32x35.png'),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'ATIVIDADES',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    minimumSize: Size(double.infinity, 100),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MenuReportScreen()));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        child: Image.asset('assets/images/img_rectangle9_1.png'),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'CONTROLE DE PRODUTIVIDADE',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    minimumSize: Size(double.infinity, 100),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(border: Border.all(width: 3)),
-                    child: const Icon(Icons.photo_camera_front_outlined),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('luis.e@ges.inatel.br'),
-                      Text('Level: '),
-                      Text('Medals: '),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-                width: 300,
-                height: 50,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('WEEK PROGRESS'),
-                    LinearPercentIndicator(
-                      progressColor: Colors.deepPurple,
-                      lineHeight: 20,
-                      center: const Text('50%'),
-                      percent: 0.5,
-                    ),
-                  ],
-                )),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Botão Calendário e to-do list
-
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Lógica do botão
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Pomodoro()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side:
-                              const BorderSide(width: 3.0, color: Colors.black),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                      child: const Icon(
-                        Icons.access_time,
-                        size: 50,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/InitialScreen');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side:
-                              const BorderSide(width: 3.0, color: Colors.black),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                      child: const Icon(
-                        Icons.task,
-                        size: 50,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Botão Tecnica pomodoro e comunidade
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => MenuReportScreen()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side:
-                              const BorderSide(width: 3.0, color: Colors.black),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                      child: const Icon(
-                        Icons.bolt,
-                        size: 50,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side:
-                              const BorderSide(width: 3.0, color: Colors.black),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                      child: const Icon(
-                        Icons.people,
-                        size: 50,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
