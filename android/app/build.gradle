@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.studymate_project_fetin"
+    namespace "StudyMate"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
